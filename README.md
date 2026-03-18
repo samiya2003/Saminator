@@ -3,66 +3,65 @@
 <img width="1440" height="890" alt="image" src="https://github.com/user-attachments/assets/8939d249-fd79-4699-8c34-d17831fade68" />
 
 
-Saminator 
+Saminator
+English | 中文
 
-A Chrome extension that translates video subtitles in real time — BiliBili, YouTube, Vimeo, wherever. No API key, no setup, just works.
+Chrome extension that translates subtitles in real time. Works on BiliBili, YouTube, Vimeo — pretty much anywhere. No API key, no account, nothing to configure.
 
-What it does?
+What it does
+Picks up subtitles on screen and replaces them with your chosen language. You can show the translation only, or enable bilingual mode to stack both languages. Runs on Google Translate, completely free.
 
-Detects subtitles on screen and swaps them out with a translation of your choice. You can keep it translation-only or turn on bilingual mode to see both languages stacked. Powered by Google Translate under the hood, completely free.
-
-How to Install
-
-1. Download and extract the zip
-2. Go to chrome://extensions in Chrome
-3. Turn on Developer mode (top right)
-4. Click Load unpacked select the folder
-5. Done icon shows up in your toolbar
+Installation
+Step 1 — Download the ZIP and unzip it
+Step 2 — Open Chrome and go to chrome://extensions
+Step 3 — Enable Developer mode using the toggle in the top right
+Step 4 — Click Load unpacked and select the unzipped folder
+Step 5 — The Saminator icon will appear in your Chrome toolbar
 
 Usage
+Step 1 — Click the icon and switch it on
+Step 2 — Select your target language from the dropdown
+Step 3 — Open any video and turn subtitles on in the player
+Step 4 — Subtitles will translate automatically from here
 
-1. Click the icon, toggle it on
-2. Pick your target language (English by default)
-3. Play a video, enable subtitles in the player
-4. Subtitles get translated automatically
+Things to know
 
-Notes
+Subtitles need to be enabled in the video player itself — the extension reads what's on screen
+If you switch languages, the cache clears and retranslates everything fresh
+Compatible with any site that renders subtitles as standard HTML elements
 
-- Subtitles need to be turned on in the video player itself
-- Cache clears when you switch languages
-- Works on any site using standard subtitle elements
 
 License
+MIT — do whatever you want with it.
 
-MIT
 
-一个 Chrome 浏览器扩展，可以实时翻译视频字幕 — B站 , YouTube、Vimeo，哪里都能用。不需要 API 密钥，装上就能跑。
+中文
+English | 中文
 
-功能?
+实时翻译视频字幕的 Chrome 扩展。B站、YouTube、Vimeo 都支持，基本上有字幕的网站都能用。不需要 API key，不用注册，装好直接用。
 
-检测屏幕上显示的字幕 直接替换成你选的语言。可以只显示译文 也可以开启双语模式同时显示原文和翻译。底层用的 Google 翻译 完全免费。
+功能
+检测屏幕上的字幕，自动替换成你选的语言。可以只显示译文，也可以开双语模式，两种语言同时显示。用的 Google 翻译，完全免费。
 
-安装
-
-1. 下载压缩包并解压
-2. 打开 Chrome，进入 chrome://extensions
-3. 右上角开启**开发者模式**
-4. 点击 加载已解压的扩展程序 ，选择解压后的文件夹
-5. 完成 工具栏里会出现图标
+安装步骤
+第一步 — 下载 ZIP 文件，解压到本地
+第二步 — 打开 Chrome，地址栏输入 chrome://extensions
+第三步 — 右上角打开开发者模式
+第四步 — 点击加载已解压的扩展程序，选择刚才解压的文件夹
+第五步 — Chrome 工具栏出现 Saminator 图标，安装完成
 
 使用方法
+第一步 — 点击图标，开启开关
+第二步 — 下拉菜单选择目标语言
+第三步 — 打开视频，在播放器里把字幕开着
+第四步 — 字幕会自动翻译，不用做其他操作
 
-1. 点击图标，打开开关
-2. 选择目标语言（默认英文）
-3. 播放视频 在播放器里开启字幕
-4. 字幕自动翻译 不用管其他的
+注意事项
 
-注意
+字幕要在播放器里手动开启，扩展读取的是屏幕上显示的内容
+切换语言后缓存会清空，重新翻译
+只要网站用的是标准 HTML 字幕元素，基本都兼容
 
-- 需要先在播放器里手动开启字幕
-- 切换语言时缓存会自动清空
-- 支持所有使用标准字幕元素的网站
 
 许可证
-
-MIT
+MIT — 随便用。
