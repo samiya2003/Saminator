@@ -1,5 +1,3 @@
-![saminator_bears](https://github.com/user-attachments/assets/05e48275-b9c5-4d7a-973d-d21fd29e4bb4)
-
 
 ![Uploading sami<svg width="100%" viewBox="0 0 680 420" xmlns="http://www.w3.org/2000/svg"><defs><mask id="imagine-text-gaps-3ynttb" maskUnits="userSpaceOnUse"><rect x="0" y="0" width="680" height="420" fill="white"/><rect x="-70.59113311767578" y="176.77769470214844" width="141.18226623535156" height="21.000106811523438" fill="black" rx="2"/><rect x="-40.70075225830078" y="193.72215270996094" width="82.3417739868164" height="20.05565643310547" fill="black" rx="2"/><rect x="327.3302307128906" y="196.72215270996094" width="25.339519500732422" height="19.1112060546875" fill="black" rx="2"/><rect x="-58.93307113647461" y="176.77769470214844" width="117.86614227294922" height="21.000106811523438" fill="black" rx="2"/><rect x="-40.70075225830078" y="193.72215270996094" width="82.3417739868164" height="20.05565643310547" fill="black" rx="2"/><rect x="232.427734375" y="14.888795852661133" width="215.14453125" height="22.889007568359375" fill="black" rx="2"/><rect x="227.4398651123047" y="37.611045837402344" width="225.1202850341797" height="17.222305297851562" fill="black" rx="2"/></mask></defs>
 
@@ -151,8 +149,6 @@
 <!-- top title -->
 <text x="340" y="32" font-family="-apple-system,sans-serif" font-size="16" font-weight="700" fill="#CC99FF" text-anchor="middle" style="fill:rgb(204, 153, 255);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:-apple-system, sans-serif;font-size:16px;font-weight:700;text-anchor:middle;dominant-baseline:auto">Saminator — before &amp; after</text>
 <text x="340" y="50" font-family="-apple-system,sans-serif" font-size="11" fill="#888" text-anchor="middle" style="fill:rgb(136, 136, 136);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:-apple-system, sans-serif;font-size:11px;font-weight:400;text-anchor:middle;dominant-baseline:auto">自动字幕翻译 · Automatic subtitle translation</text>
-
-</svg>nator_bears.svg…]()
 
 
 
