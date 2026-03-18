@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saminator</title>
+  <style>
+    :root {
+      --bg: #0d0f14;
+      --surface: #161a24;
+      --surface2: #1c2030;
+      --border: rgba(255,255,255,0.08);
+      --border2: rgba(255,255,255,0.14);
+      --text: #e8edf8;
+      --text2: rgba(232,237,248,0.6);
+      --text3: rgba(232,237,248,0.38);
+      --accent: #4f8ef5;
+      --accent-glow: rgba(79,142,245,0.2);
+      --green: #3dd68c;
+      --green-dim: rgba(61,214,140,0.15);
+      --red: #f55f5f;
+      --red-dim: rgba(245,95,95,0.12);
+      --amber: #f5a623;
+      --amber-dim: rgba(245,166,35,0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      width: 320px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, "Segoe UI", "Inter", sans-serif;
+      font-size: 13px;
+    }
+
+    .header {
+      padding: 16px 16px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(79,142,245,0.05), transparent);
+    }
+
+    .logo {
+      width: 32px; height: 32px;
+      background: linear-gradient(135deg, #4f8ef5, #7c5bf0);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0;
+    }
+
+    .header-text h1 { font-size: 14px; font-weight: 700; letter-spacing: -0.2px; }
+    .header-text p  { font-size: 11px; color: var(--text3); margin-top: 1px; }
+
+    /* Status row */
+    .status-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 16px;
+    }
+
+    .status-pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 5px 11px; border-radius: 999px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.3px;
+      border: 1px solid transparent; transition: all 0.2s;
+    }
+    .status-pill.on  { background: var(--green-dim); border-color: rgba(61,214,140,0.3); color: var(--green); }
+    .status-pill.off { background: var(--red-dim);   border-color: rgba(245,95,95,0.2);  color: var(--red); }
+
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+
+    /* Toggle */
+    .toggle-wrap { position: relative; width: 48px; height: 26px; flex-shrink: 0; }
+    .toggle-wrap input { opacity: 0; width: 0; height: 0; position: absolute; }
+    .track {
+      position: absolute; inset: 0; border-radius: 999px;
+      background: rgba(255,255,255,0.12); border: 1px solid var(--border2);
+      cursor: pointer; transition: background 0.2s, border-color 0.2s;
+    }
+    .track::before {
+      content: ""; position: absolute; left: 3px; top: 3px;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+      transition: transform 0.2s;
+    }
+    input:checked + .track { background: var(--accent); border-color: transparent; }
+    input:checked + .track::before { transform: translateX(22px); }
+
+    /* Health banner — NEW */
+    .health-banner {
+      margin: 0 12px 8px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 11px;
+      line-height: 1.5;
+      display: none; /* shown by JS when there's an error */
+    }
+    .health-banner.error {
+      display: block;
+      background: var(--red-dim);
+      border: 1px solid rgba(245,95,95,0.3);
+      color: var(--red);
+    }
+    .health-banner.warning {
+      display: block;
+      background: var(--amber-dim);
+      border: 1px solid rgba(245,166,35,0.25);
+      color: var(--amber);
+    }
+
+    /* Section cards */
+    .section {
+      margin: 0 12px 10px;
+      border-radius: 12px; border: 1px solid var(--border);
+      background: var(--surface); overflow: hidden;
+    }
+    .section-label {
+      padding: 9px 12px 6px;
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      color: var(--text3);
+    }
+    .row {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; padding: 10px 12px;
+      border-top: 1px solid var(--border);
+    }
+    .row:first-child { border-top: none; }
+    .row-label { font-size: 13px; color: var(--text); }
+    .row-sub   { font-size: 11px; color: var(--text2); margin-top: 2px; }
+
+    select {
+      background: var(--surface2); color: var(--text);
+      border: 1px solid var(--border2); border-radius: 8px;
+      padding: 6px 28px 6px 10px;
+      font-size: 12px; appearance: none; outline: none; cursor: pointer;
+      min-width: 130px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 10px center;
+    }
+    select:focus { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-glow); }
+
+    .info-bar {
+      margin: 0 12px 12px; padding: 9px 12px;
+      border-radius: 10px;
+      background: rgba(79,142,245,0.07);
+      border: 1px solid rgba(79,142,245,0.18);
+      font-size: 11px; color: var(--text2); line-height: 1.5;
+    }
+    .info-bar strong { color: var(--accent); font-weight: 600; }
+
+    .cb { width: 16px; height: 16px; accent-color: var(--accent); cursor: pointer; flex-shrink: 0; }
+
+    .footer {
+      padding: 8px 12px 12px; text-align: center;
+      font-size: 10px; color: var(--text3);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="logo">🌐</div>
+    <div class="header-text">
+      <h1>Saminator</h1>
+      <p>Auto subtitles · Any site · Any language</p>
+    </div>
+  </div>
+
+  <div class="status-row">
+    <div class="status-pill off" id="statusPill">
+      <span class="dot"></span>
+      <span id="statusText">Inactive</span>
+    </div>
+    <label class="toggle-wrap" title="Enable / disable translation">
+      <input type="checkbox" id="enabledToggle" />
+      <span class="track"></span>
+    </label>
+  </div>
+
+  <!-- Health warning — shown by JS if translation API is failing -->
+  <div class="health-banner" id="healthBanner"></div>
+
+  <div class="section">
+    <div class="section-label">Output Language</div>
+    <div class="row">
+      <div>
+        <div class="row-label">Translate to</div>
+        <div class="row-sub">All subtitles will be translated to this language</div>
+      </div>
+      <select id="langSelect">
+        <option value="en">🇬🇧 English</option>
+        <option value="fr">🇫🇷 French</option>
+        <option value="de">🇩🇪 German</option>
+        <option value="es">🇪🇸 Spanish</option>
+        <option value="it">🇮🇹 Italian</option>
+        <option value="pt">🇵🇹 Portuguese</option>
+        <option value="nl">🇳🇱 Dutch</option>
+        <option value="pl">🇵🇱 Polish</option>
+        <option value="ru">🇷🇺 Russian</option>
+        <option value="ja">🇯🇵 Japanese</option>
+        <option value="ko">🇰🇷 Korean</option>
+        <option value="zh-cn">🇨🇳 Chinese (Simplified)</option>
+        <option value="zh-tw">🇹🇼 Chinese (Traditional)</option>
+        <option value="ar">🇸🇦 Arabic</option>
+        <option value="hi">🇮🇳 Hindi</option>
+        <option value="tr">🇹🇷 Turkish</option>
+        <option value="vi">🇻🇳 Vietnamese</option>
+        <option value="th">🇹🇭 Thai</option>
+        <option value="id">🇮🇩 Indonesian</option>
+        <option value="sv">🇸🇪 Swedish</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Display</div>
+    <div class="row">
+      <div>
+        <div class="row-label">Bilingual mode</div>
+        <div class="row-sub">Show translation above original text</div>
+      </div>
+      <input type="checkbox" class="cb" id="bilingualCb" />
+    </div>
+  </div>
+
+  <div class="info-bar">
+    Enable translation, then play a video on <strong>BiliBili, YouTube, Vimeo</strong> or any site with subtitles. Translated automatically using <strong>Google Translate</strong> — no API key required.
+  </div>
+
+  <div class="footer">Saminator v2.0 · Free · No key needed</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
